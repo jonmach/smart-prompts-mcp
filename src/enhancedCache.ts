@@ -1,7 +1,7 @@
 // Enhanced cache system with GitHub integration
 
 import { PromptInfo, UsageStats } from './types.js';
-import { GitHubPromptFetcher } from './github.js';
+import { EnhancedGitHubPromptFetcher } from './github-enhanced.js';
 import { ServerConfig } from './config.js';
 
 export class EnhancedPromptCache {
@@ -10,11 +10,11 @@ export class EnhancedPromptCache {
   private promptsByTag: Map<string, Set<string>> = new Map();
   private usageStats: Map<string, UsageStats> = new Map();
   private lastFetch: number = 0;
-  private fetcher: GitHubPromptFetcher;
+  private fetcher: EnhancedGitHubPromptFetcher;
   private config: ServerConfig;
   private refreshTimer?: NodeJS.Timeout;
 
-  constructor(fetcher: GitHubPromptFetcher, config: ServerConfig) {
+  constructor(fetcher: EnhancedGitHubPromptFetcher, config: ServerConfig) {
     this.fetcher = fetcher;
     this.config = config;
   }

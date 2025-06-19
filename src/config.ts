@@ -26,9 +26,9 @@ export const defaultConfig: ServerConfig = {
   github: {
     owner: process.env.GITHUB_OWNER || 'jezweb',
     repo: process.env.GITHUB_REPO || 'prompts',
-    branch: process.env.GITHUB_BRANCH || 'main',
-    path: process.env.GITHUB_PATH || '',
-    token: process.env.GITHUB_TOKEN,
+    ...(process.env.GITHUB_BRANCH ? { branch: process.env.GITHUB_BRANCH } : { branch: 'main' }),
+    ...(process.env.GITHUB_PATH ? { path: process.env.GITHUB_PATH } : {}),
+    ...(process.env.GITHUB_TOKEN ? { token: process.env.GITHUB_TOKEN } : {}),
   },
   cache: {
     ttl: 5 * 60 * 1000, // 5 minutes

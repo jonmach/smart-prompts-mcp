@@ -1,11 +1,11 @@
-// GitHub integration for fetching prompts
+// Enhanced GitHub integration for fetching prompts recursively
 
 import { Octokit } from '@octokit/rest';
 import * as yaml from 'js-yaml';
 import { GitHubConfig } from './config.js';
 import { PromptInfo, PromptMetadata } from './types.js';
 
-export class GitHubPromptFetcher {
+export class EnhancedGitHubPromptFetcher {
   private octokit: Octokit;
   private config: GitHubConfig;
 
@@ -17,47 +17,57 @@ export class GitHubPromptFetcher {
   }
 
   /**
-   * Fetch all prompts from the GitHub repository
+   * Fetch all prompts from the GitHub repository recursively
    */
   async fetchAllPrompts(): Promise<PromptInfo[]> {
+    console.error('Fetching prompts recursively from GitHub...');
+    const prompts: PromptInfo[] = [];
+    await this.fetchPromptsRecursive(this.config.path || '', prompts);
+    return prompts;
+  }
+
+  /**
+   * Recursively fetch prompts from directories
+   */
+  private async fetchPromptsRecursive(path: string, prompts: PromptInfo[]): Promise<void> {
     try {
       const params: any = {
         owner: this.config.owner,
         repo: this.config.repo,
-        path: this.config.path || '',
+        path,
       };
       if (this.config.branch) {
         params.ref = this.config.branch;
       }
+      
       const { data: contents } = await this.octokit.repos.getContent(params);
 
       if (!Array.isArray(contents)) {
-        throw new Error('Expected directory listing but got file');
+        // Single file, not a directory
+        return;
       }
 
-      const prompts: PromptInfo[] = [];
-      
-      // Filter for markdown files
-      const markdownFiles = contents.filter(
-        (file) => file.type === 'file' && file.name.endsWith('.md')
-      );
-
-      // Fetch each prompt file
-      for (const file of markdownFiles) {
-        try {
-          const prompt = await this.fetchPrompt(file.path);
-          if (prompt) {
-            prompts.push(prompt);
+      // Process all items in parallel
+      const promises = contents.map(async (item) => {
+        if (item.type === 'file' && item.name.endsWith('.md') && item.name !== 'README.md') {
+          // Fetch markdown files (except README)
+          try {
+            const prompt = await this.fetchPrompt(item.path);
+            if (prompt) {
+              prompts.push(prompt);
+            }
+          } catch (error) {
+            console.error(`Error fetching prompt ${item.path}:`, error);
           }
-        } catch (error) {
-          console.error(`Error fetching prompt ${file.path}:`, error);
+        } else if (item.type === 'dir' && !item.name.startsWith('.') && item.name !== 'n8n') {
+          // Recursively process directories (skip hidden and n8n)
+          await this.fetchPromptsRecursive(item.path, prompts);
         }
-      }
+      });
 
-      return prompts;
+      await Promise.all(promises);
     } catch (error) {
-      console.error('Error fetching prompts from GitHub:', error);
-      throw error;
+      console.error(`Error fetching directory ${path}:`, error);
     }
   }
 
@@ -74,6 +84,7 @@ export class GitHubPromptFetcher {
       if (this.config.branch) {
         params.ref = this.config.branch;
       }
+      
       const { data } = await this.octokit.repos.getContent(params);
 
       if ('content' in data && data.type === 'file') {
@@ -96,15 +107,25 @@ export class GitHubPromptFetcher {
     const frontmatterRegex = /^---\n([\s\S]*?)\n---\n([\s\S]*)$/;
     const match = content.match(frontmatterRegex);
 
+    // Extract category from path
+    const pathParts = path.split('/');
+    const defaultCategory = pathParts.length > 1 ? pathParts[0] : 'general';
+    const fileName = pathParts[pathParts.length - 1] || 'untitled.md';
+    const defaultName = fileName.replace(/\.md$/, '').replace(/-/g, '_');
+
     let metadata: PromptMetadata = {
-      title: path.replace(/\.md$/, '').replace(/^.*\//, ''),
+      title: defaultName.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
       description: '',
-      category: 'general',
       tags: [],
       difficulty: 'intermediate',
       created: new Date().toISOString(),
       updated: new Date().toISOString(),
     };
+    
+    // Add category only if it's not undefined
+    if (defaultCategory) {
+      metadata.category = defaultCategory;
+    }
 
     let promptContent = content;
 
@@ -121,6 +142,8 @@ export class GitHubPromptFetcher {
         if (parsedYaml.category) metadata.category = parsedYaml.category;
         if (parsedYaml.tags) metadata.tags = parsedYaml.tags;
         if (parsedYaml.difficulty) metadata.difficulty = parsedYaml.difficulty;
+        if (parsedYaml.author) metadata.author = parsedYaml.author;
+        if (parsedYaml.version) metadata.version = parsedYaml.version;
         if (parsedYaml.created) metadata.created = parsedYaml.created;
         if (parsedYaml.updated) metadata.updated = parsedYaml.updated;
         
@@ -129,16 +152,22 @@ export class GitHubPromptFetcher {
           (metadata as any).arguments = parsedYaml.arguments;
         }
 
-        promptContent = match[2]?.trim() || '';
+        // Use the name from YAML if available
+        if (parsedYaml.name) {
+          promptContent = match[2]?.trim() || '';
+        } else {
+          promptContent = match[2]?.trim() || '';
+        }
       } catch (error) {
         console.error('Error parsing YAML frontmatter:', error);
       }
     }
 
     return {
-      name: metadata.title || 'Untitled',
+      name: (metadata as any).name || metadata.title || defaultName,
       content: promptContent,
       metadata,
+      preview: promptContent.substring(0, 200) + (promptContent.length > 200 ? '...' : ''),
     };
   }
 

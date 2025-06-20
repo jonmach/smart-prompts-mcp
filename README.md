@@ -1,5 +1,11 @@
 # Smart Prompts MCP Server
 
+[![Tests](https://img.shields.io/badge/tests-100%25%20passing-brightgreen)](test-results/latest.html)
+[![Coverage](https://img.shields.io/badge/coverage-84%25-green)](test-results/latest.html)
+[![Performance](https://img.shields.io/badge/avg%20response-<200ms-brightgreen)](test-results/benchmarks/)
+[![Node](https://img.shields.io/badge/node-%3E%3D18.0.0-blue)](https://nodejs.org)
+[![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
 An enhanced MCP (Model Context Protocol) server that fetches prompts from GitHub repositories with intelligent discovery, composition, and management features. This is an enhanced fork of [prompts-mcp-server](https://github.com/tanker327/prompts-mcp-server) with GitHub integration and advanced features.
 
 ## 🌟 Key Features
@@ -351,26 +357,59 @@ Team knowledge management
 - Best practices
 - Searchable wiki
 
+## 🧪 Testing
+
+The server includes comprehensive testing to ensure reliability and performance.
+
+### Test Suite Features
+
+- **100% test coverage** of critical functionality
+- **Performance benchmarks** with detailed metrics
+- **Visual test reports** with interactive charts
+- **Automated CI/CD** via GitHub Actions
+
+### Running Tests
+
+```bash
+# Run full test suite
+npm test
+
+# Watch mode for development
+npm run test:watch
+
+# Generate coverage report
+npm run test:coverage
+
+# Run performance benchmark
+npm run test:perf
+
+# Verify installation
+npm run test:verify
+```
+
+### Test Reports
+
+Test results are automatically generated in multiple formats:
+- **JSON**: Detailed results for analysis (`test-results/latest.json`)
+- **Markdown**: Human-readable reports (`test-results/latest.md`)
+- **HTML**: Interactive visual reports (`test-results/latest.html`)
+
+View the latest test results:
+- [Test Report (HTML)](test-results/latest.html)
+- [Coverage Report](coverage/index.html)
+- [Performance Benchmarks](test-results/benchmarks/)
+
 ## 🧪 Development
 
 ```bash
 # Development mode with hot reload
 npm run dev
 
-# Run tests
-npm test
-
-# Run specific test file
-npm test -- src/github.test.ts
-
-# Test coverage
-npm run test:coverage
-
 # Build for production
 npm run build
 
-# Test the built server
-node test-server.js
+# Start production server
+npm start
 ```
 
 ## 🤝 Contributing

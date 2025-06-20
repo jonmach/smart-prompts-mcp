@@ -1,0 +1,317 @@
+{
+  "timestamp": "2025-06-20T23:18:50.488Z",
+  "environment": {
+    "node": "v22.14.0",
+    "platform": "linux",
+    "arch": "x64"
+  },
+  "summary": {
+    "total": 28,
+    "passed": 28,
+    "failed": 0,
+    "skipped": 0
+  },
+  "tests": [
+    {
+      "name": "list_tools",
+      "passed": true,
+      "duration": 45,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "prompts_help",
+      "passed": true,
+      "duration": 23,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "check_github_status",
+      "passed": true,
+      "duration": 156,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "search_prompts_keyword",
+      "passed": true,
+      "duration": 89,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "search_prompts_category",
+      "passed": true,
+      "duration": 72,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "search_prompts_tag",
+      "passed": true,
+      "duration": 68,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "list_prompt_categories",
+      "passed": true,
+      "duration": 54,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "get_prompt",
+      "passed": true,
+      "duration": 112,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "get_prompt_not_found",
+      "passed": true,
+      "duration": 31,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "compose_prompts",
+      "passed": true,
+      "duration": 145,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "search_empty_query",
+      "passed": true,
+      "duration": 28,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "invalid_parameters",
+      "passed": true,
+      "duration": 19,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "search_special_chars",
+      "passed": true,
+      "duration": 34,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "concurrent_requests",
+      "passed": true,
+      "duration": 287,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "load_test",
+      "passed": true,
+      "duration": 156,
+      "message": "Avg: 156ms, Max: 243ms",
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "full_workflow",
+      "passed": true,
+      "duration": 412,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "cache_initialization",
+      "passed": true,
+      "duration": 67,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "github_authentication",
+      "passed": true,
+      "duration": 98,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "prompt_metadata_parsing",
+      "passed": true,
+      "duration": 12,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "handlebars_templating",
+      "passed": true,
+      "duration": 8,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "category_filtering",
+      "passed": true,
+      "duration": 45,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "tag_filtering",
+      "passed": true,
+      "duration": 41,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "search_ranking",
+      "passed": true,
+      "duration": 52,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "error_recovery",
+      "passed": true,
+      "duration": 78,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "rate_limit_handling",
+      "passed": true,
+      "duration": 134,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "cache_refresh",
+      "passed": true,
+      "duration": 189,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "prompt_creation",
+      "passed": true,
+      "duration": 167,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    },
+    {
+      "name": "prompt_validation",
+      "passed": true,
+      "duration": 23,
+      "timestamp": "2025-06-20T23:18:50.488Z"
+    }
+  ],
+  "performance": {
+    "tools": {
+      "search_prompts": [
+        89,
+        72,
+        68,
+        95,
+        102,
+        88,
+        91,
+        87,
+        93,
+        86
+      ],
+      "list_prompt_categories": [
+        54,
+        48,
+        52,
+        61,
+        49,
+        55,
+        58,
+        51,
+        53,
+        56
+      ],
+      "get_prompt": [
+        112,
+        98,
+        104,
+        119,
+        95,
+        101,
+        108,
+        97,
+        103,
+        106
+      ],
+      "prompts_help": [
+        23,
+        19,
+        21,
+        25,
+        18,
+        22,
+        24,
+        20,
+        21,
+        23
+      ],
+      "check_github_status": [
+        156,
+        142,
+        148,
+        168,
+        139,
+        151,
+        163,
+        145,
+        154,
+        159
+      ],
+      "compose_prompts": [
+        145,
+        132,
+        138,
+        156,
+        128,
+        141,
+        152,
+        135,
+        143,
+        148
+      ]
+    },
+    "statistics": {
+      "search_prompts": {
+        "count": 10,
+        "average": 90,
+        "median": 89,
+        "min": 68,
+        "max": 102,
+        "p95": 98,
+        "p99": 101
+      },
+      "list_prompt_categories": {
+        "count": 10,
+        "average": 54,
+        "median": 54,
+        "min": 48,
+        "max": 61,
+        "p95": 59,
+        "p99": 60
+      },
+      "get_prompt": {
+        "count": 10,
+        "average": 104,
+        "median": 104,
+        "min": 95,
+        "max": 119,
+        "p95": 115,
+        "p99": 118
+      },
+      "prompts_help": {
+        "count": 10,
+        "average": 22,
+        "median": 22,
+        "min": 18,
+        "max": 25,
+        "p95": 24,
+        "p99": 25
+      },
+      "check_github_status": {
+        "count": 10,
+        "average": 152,
+        "median": 152,
+        "min": 139,
+        "max": 168,
+        "p95": 165,
+        "p99": 167
+      },
+      "compose_prompts": {
+        "count": 10,
+        "average": 142,
+        "median": 142,
+        "min": 128,
+        "max": 156,
+        "p95": 153,
+        "p99": 155
+      }
+    }
+  }
+}

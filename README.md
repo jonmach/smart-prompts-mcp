@@ -109,6 +109,103 @@ Add to Roo Cline MCP settings:
 }
 ```
 
+## SSE Configuration (using Docker)
+
+This uses mcp-proxy to allow stdio endpoints to be accessed through sse.
+
+
+#### Build docker image
+
+**NOTE**: GITHUB\_OWNER, GITHUB\_REPO, and GITHUB\_TOKEN variable seem to be ignored from the .env file.
+
+Update them if you want for consistency, but the run.sh file sets environment variables later, which do work properly.
+    
+```bash
+cd docker
+
+# Update your dotenv values - note the NOTE above.
+vi dotenv.txt
+
+# Build the image
+./build.sh
+
+# modify environment 
+# Run the image
+# Verify installation
+./verify-install.sh
+```
+#### Modify your run.sh file
+
+```
+# Run with environment variables
+docker run --rm -d \
+  --name smart-prompts-server \
+  -p 8080:8080 \
+  -e GITHUB_OWNER=<your github name> \
+  -e GITHUB_REPO=<your repo name (not the URL)> \
+  -e GITHUB_TOKEN=<GITHUB Token>
+
+# Use a read or read-write token as needed.
+```
+
+#### Start Docker Image
+
+```bash
+cd docker
+
+# Update your dotenv values - note the NOTE above.
+vi dotenv.txt
+
+# Build the image
+./build.sh
+
+# modify environment 
+# Run the image
+# Verify installation
+./verify-install.sh
+```
+
+
+### Configure using SSE Endpoint
+
+Some example uses of SSE Endpoint configurations. 
+
+For **LMStudio**
+Add the following to the MCP Configuration
+
+```bash
+{
+  "mcpServers": {
+    ...
+    
+    "smart-prompts": {
+      "url": "http://<your host>:8080/sse"
+    }
+    
+    ...
+  }
+}
+```
+
+For **Cline** within VSCode
+
+```bash
+    "smart-prompts": {
+      "url": "http:/<your host>:8080/sse",
+      "disabled": false,
+      "autoApprove": [
+        "search_prompts",
+        "prompts_help",
+        "create_github_prompt",
+        "list_prompt_categories",
+        "check_github_status"
+      ]
+    }
+}
+```
+
+
+
 ## 📁 Prompt Organization Best Practices
 
 ### Recommended Folder Structure

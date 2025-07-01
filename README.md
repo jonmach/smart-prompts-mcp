@@ -191,7 +191,7 @@ For **Cline** within VSCode
 
 ```bash
     "smart-prompts": {
-      "url": "http:/<your host>:8080/sse",
+      "url": "http://<your host>:8080/sse",
       "disabled": false,
       "autoApprove": [
         "search_prompts",

@@ -1,3 +1,4 @@
+docker/myrun.sh
 # Dependencies
 node_modules/
 package-lock.json

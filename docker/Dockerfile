@@ -30,7 +30,7 @@ RUN npm cache clean --force
 RUN npm install
 RUN npm run build 
 RUN ./verify-install.sh
-COPY ./mydotenv.txt .env
+COPY ./mydotenv.txt /home/app/.env
 
 WORKDIR /home/app
 

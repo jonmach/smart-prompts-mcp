@@ -54,3 +54,4 @@ temp/
 .cache/
 
 myrun.sh
+docker/mydotenv.txt

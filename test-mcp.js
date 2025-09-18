@@ -10,7 +10,7 @@ async function testMCPServer() {
   const serverProcess = spawn('node', ['dist/index.js'], {
     env: {
       ...process.env,
-      GITHUB_OWNER: 'jezweb',
+      GITHUB_OWNER: 'jonmach',
       GITHUB_REPO: 'prompts'
     }
   });
@@ -20,7 +20,7 @@ async function testMCPServer() {
     command: 'node',
     args: ['dist/index.js'],
     env: {
-      GITHUB_OWNER: 'jezweb',
+      GITHUB_OWNER: 'jonmach',
       GITHUB_REPO: 'prompts'
     }
   });

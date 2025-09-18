@@ -10,7 +10,7 @@ async function testEnhancedServer() {
     command: 'node',
     args: ['dist/index.js'],
     env: {
-      GITHUB_OWNER: 'jezweb',
+      GITHUB_OWNER: 'jonmach',
       GITHUB_REPO: 'prompts',
       GITHUB_TOKEN: process.env.GITHUB_TOKEN || ''
     }

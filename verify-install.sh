@@ -4,6 +4,8 @@ echo "🔍 Verifying Smart Prompts MCP Server Installation"
 echo "================================================="
 echo ""
 
+OWNER=jonmach
+
 # Check if built
 echo "1. Checking build..."
 if [ -d "dist" ] && [ -f "dist/index.js" ]; then
@@ -16,13 +18,13 @@ fi
 # Check configuration
 echo ""
 echo "2. Configuration:"
-echo "   GITHUB_OWNER: ${GITHUB_OWNER:-jezweb}"
+echo "   GITHUB_OWNER: ${GITHUB_OWNER:-$OWNER}"
 echo "   GITHUB_REPO: ${GITHUB_REPO:-prompts}"
 echo ""
 
 # Test GitHub access
 echo "3. Testing GitHub access..."
-GITHUB_OWNER=${GITHUB_OWNER:-jezweb} GITHUB_REPO=${GITHUB_REPO:-prompts} node -e "
+GITHUB_OWNER=${GITHUB_OWNER:-$OWNER} GITHUB_REPO=${GITHUB_REPO:-prompts} node -e "
 import { loadConfig } from './dist/config.js';
 import { EnhancedGitHubPromptFetcher } from './dist/github-enhanced.js';
 
@@ -64,7 +66,7 @@ if [ $? -eq 0 ]; then
     echo '      "command": "node",'
     echo '      "args": ["'$(pwd)'/dist/index.js"],'
     echo '      "env": {'
-    echo '        "GITHUB_OWNER": "jezweb",'
+    echo '        "GITHUB_OWNER": "jonmach",'
     echo '        "GITHUB_REPO": "prompts"'
     echo '      }'
     echo '    }'

@@ -53,5 +53,5 @@ temp/
 .eslintcache
 .cache/
 
-myrun.sh
+docker/myrun.sh
 docker/mydotenv.txt

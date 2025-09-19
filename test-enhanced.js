@@ -11,7 +11,7 @@ async function testEnhancedServer() {
     args: ['dist/index.js'],
     env: {
       GITHUB_OWNER: 'jonmach',
-      GITHUB_REPO: 'prompts',
+      GITHUB_REPO: 'smart-prompts',
       GITHUB_TOKEN: process.env.GITHUB_TOKEN || ''
     }
   });

@@ -10,8 +10,8 @@ const __dirname = path.dirname(__filename);
 
 // Test configuration
 const TEST_CONFIG = {
-  GITHUB_OWNER: process.env.TEST_GITHUB_OWNER || 'jezweb',
-  GITHUB_REPO: process.env.TEST_GITHUB_REPO || 'prompts',
+  GITHUB_OWNER: process.env.TEST_GITHUB_OWNER || 'jonmach',
+  GITHUB_REPO: process.env.TEST_GITHUB_REPO || 'smart-prompts',
   GITHUB_TOKEN: process.env.GITHUB_TOKEN || '',
   TEST_TIMEOUT: 30000,
   PERFORMANCE_THRESHOLD: 2000 // 2 seconds max response time

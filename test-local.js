@@ -8,7 +8,7 @@ const server = spawn('node', ['dist/index.js'], {
   env: {
     ...process.env,
     GITHUB_OWNER: 'jonmach',
-    GITHUB_REPO: 'prompts'
+    GITHUB_REPO: 'smart-prompts'
   }
 });
 

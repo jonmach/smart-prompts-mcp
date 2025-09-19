@@ -92,8 +92,8 @@ Latest results are always available at:
 
 ```bash
 # GitHub Configuration (for testing)
-TEST_GITHUB_OWNER=jezweb
-TEST_GITHUB_REPO=prompts
+TEST_GITHUB_OWNER=jonmach
+TEST_GITHUB_REPO=smart-prompts
 GITHUB_TOKEN=your_token_here
 
 # Test Configuration

@@ -19,12 +19,12 @@ fi
 echo ""
 echo "2. Configuration:"
 echo "   GITHUB_OWNER: ${GITHUB_OWNER:-$OWNER}"
-echo "   GITHUB_REPO: ${GITHUB_REPO:-prompts}"
+echo "   GITHUB_REPO: ${GITHUB_REPO:-smart-prompts}"
 echo ""
 
 # Test GitHub access
 echo "3. Testing GitHub access..."
-GITHUB_OWNER=${GITHUB_OWNER:-$OWNER} GITHUB_REPO=${GITHUB_REPO:-prompts} node -e "
+GITHUB_OWNER=${GITHUB_OWNER:-$OWNER} GITHUB_REPO=${GITHUB_REPO:-smart-prompts} node -e "
 import { loadConfig } from './dist/config.js';
 import { EnhancedGitHubPromptFetcher } from './dist/github-enhanced.js';
 
@@ -67,7 +67,7 @@ if [ $? -eq 0 ]; then
     echo '      "args": ["'$(pwd)'/dist/index.js"],'
     echo '      "env": {'
     echo '        "GITHUB_OWNER": "jonmach",'
-    echo '        "GITHUB_REPO": "prompts"'
+    echo '        "GITHUB_REPO": "smart-prompts"'
     echo '      }'
     echo '    }'
     echo '  }'

@@ -11,7 +11,7 @@ async function testMCPServer() {
     env: {
       ...process.env,
       GITHUB_OWNER: 'jonmach',
-      GITHUB_REPO: 'prompts'
+      GITHUB_REPO: 'smart-prompts'
     }
   });
 
@@ -21,7 +21,7 @@ async function testMCPServer() {
     args: ['dist/index.js'],
     env: {
       GITHUB_OWNER: 'jonmach',
-      GITHUB_REPO: 'prompts'
+      GITHUB_REPO: 'smart-prompts'
     }
   });
 

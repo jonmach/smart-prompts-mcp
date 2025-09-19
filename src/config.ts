@@ -24,8 +24,8 @@ export interface ServerConfig {
 // Default configuration
 export const defaultConfig: ServerConfig = {
   github: {
-    owner: process.env.GITHUB_OWNER || 'jezweb',
-    repo: process.env.GITHUB_REPO || 'prompts',
+    owner: process.env.GITHUB_OWNER || 'jonmach',
+    repo: process.env.GITHUB_REPO || 'smart-prompts',
     ...(process.env.GITHUB_BRANCH ? { branch: process.env.GITHUB_BRANCH } : { branch: 'main' }),
     ...(process.env.GITHUB_PATH ? { path: process.env.GITHUB_PATH } : {}),
     ...(process.env.GITHUB_TOKEN ? { token: process.env.GITHUB_TOKEN } : {}),

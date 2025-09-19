@@ -15,8 +15,8 @@ const transport = new StdioClientTransport({
   command: 'node',
   args: [path.join(__dirname, '..', 'dist', 'index.js')],
   env: {
-    GITHUB_OWNER: 'jezweb',
-    GITHUB_REPO: 'prompts',
+    GITHUB_OWNER: 'jonmach',
+    GITHUB_REPO: 'smart-prompts',
     GITHUB_TOKEN: process.env.GITHUB_TOKEN || '',
     CACHE_TTL: '600000' // 10 minutes cache to reduce API calls
   }

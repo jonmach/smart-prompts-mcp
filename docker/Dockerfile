@@ -32,7 +32,7 @@ RUN npm run build
 RUN ./verify-install.sh
 COPY ./mydotenv.txt /home/app/.env
 
-WORKDIR /home/app
+#WORKDIR /home/app
 
 # Expose the proxy port
 EXPOSE 8080
